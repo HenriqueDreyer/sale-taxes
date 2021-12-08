@@ -1,4 +1,4 @@
-package com.dreyer.saletaxes.core.domain;
+package com.dreyer.saletaxes.core.domain.entity;
 
 import lombok.*;
 
@@ -11,7 +11,7 @@ import lombok.*;
 public class Product {
     Long id;
     String name;
-    Long price;
+    Double price;
     Integer productType;
-    boolean isImported;
+    String isImported;
 }

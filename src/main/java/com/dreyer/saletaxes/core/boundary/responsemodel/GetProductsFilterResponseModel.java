@@ -1,5 +1,6 @@
 package com.dreyer.saletaxes.core.boundary.responsemodel;
 
+import com.dreyer.saletaxes.core.domain.entity.ProductType;
 import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
@@ -10,7 +11,9 @@ import lombok.experimental.SuperBuilder;
 public class GetProductsFilterResponseModel {
     private Long id;
     private String name;
-    private Long price;
-    private Integer productType;
-    private Boolean isImported;
+    private Double price;
+    private Double basicTax;
+    private Double additionalTax;
+    private ProductType productType;
+    private String isImported;
 }

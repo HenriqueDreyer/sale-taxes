@@ -1,7 +1,7 @@
 package com.dreyer.saletaxes.web.controller;
 
 import com.dreyer.saletaxes.core.boundary.requestmodel.GetProductsFilterRequestModel;
-import com.dreyer.saletaxes.core.domain.Product;
+import com.dreyer.saletaxes.core.domain.entity.Product;
 import com.dreyer.saletaxes.web.presenter.GetProductsFilterPresenter;
 import com.dreyer.saletaxes.web.service.GetProductsFilterService;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,7 +33,7 @@ public class GetProductsFilterControllerTest {
     private Long id = Long.MAX_VALUE;
     private String name = "BIKE";
     private Long price = Long.MAX_VALUE;
-    private boolean isImported = false;
+    private String isImported = "N";
 
     @BeforeEach
     public void setup() {
@@ -45,8 +45,8 @@ public class GetProductsFilterControllerTest {
         final var product = Product.builder()
                 .id(Long.MAX_VALUE)
                 .name("BIKE")
-                .price(Long.MAX_VALUE)
-                .isImported(true)
+                .price(Double.MAX_VALUE)
+                .isImported("N")
                 .build();
 
         final ResponseEntity<Object> responseEntity = ResponseEntity.ok(product);
