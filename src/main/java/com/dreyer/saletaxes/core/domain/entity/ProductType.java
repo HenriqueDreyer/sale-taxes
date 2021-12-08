@@ -3,7 +3,8 @@ package com.dreyer.saletaxes.core.domain.entity;
 public enum ProductType {
     BOOK(1),
     FOOD(2),
-    MEDKIT(3);
+    MEDKIT(3),
+    OTHER(4);
 
     private final Integer value;
 

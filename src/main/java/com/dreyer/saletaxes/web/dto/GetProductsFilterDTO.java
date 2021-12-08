@@ -26,7 +26,7 @@ public class GetProductsFilterDTO {
                 responseModel.getPrice(),
                 responseModel.getBasicTax(),
                 responseModel.getAdditionalTax(),
-                responseModel.getProductType(),
+                responseModel.getProductType().getValue(),
                 responseModel.getIsImported()
         );
     }

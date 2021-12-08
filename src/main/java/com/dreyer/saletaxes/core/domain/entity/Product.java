@@ -5,13 +5,13 @@ import lombok.*;
 @Data
 @ToString
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 @With
+@EqualsAndHashCode
 public class Product {
-    Long id;
-    String name;
-    Double price;
-    Integer productType;
-    String isImported;
+    private Long id;
+    private String name;
+    private Double price;
+    private Integer productType;
+    private String isImported;
 }
