@@ -27,7 +27,7 @@ public class GetProductsFilterController {
     @GetMapping(value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> getProductsFilter(
             @RequestParam(value = "name", required = false) String productName,
-            @RequestParam(value = "isImported", required = false) boolean isImported
+            @RequestParam(value = "isImported", required = false) String isImported
     ) {
         this.getProductsFilterService.execute(GetProductsFilterRequestModel.builder()
                 .productName(productName)

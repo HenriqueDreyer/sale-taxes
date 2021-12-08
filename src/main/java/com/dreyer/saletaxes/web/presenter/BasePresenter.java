@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public abstract class BasePresenter<S, T> {
@@ -60,7 +61,7 @@ public abstract class BasePresenter<S, T> {
     protected String getLocalizedErrorMessage(final ErrorResponseModel errorResponseModel) {
         final var errorCode = errorResponseModel.getCode();
         final var params = this.getParams(errorResponseModel);
-        return String.format("%s - %s", errorCode, errorCode, params.toArray(String[]::new));
+        return String.format("%s - Error %s", errorCode, errorCode, getLocalizedErrorMessage(errorCode, params.toArray(String[]::new)));
     }
 
     private T getSuccessResponseBody() {
@@ -74,6 +75,10 @@ public abstract class BasePresenter<S, T> {
 
     private List<ErrorResponseModel> getErrors() {
         return errorsResponseModelThreadLocal.get();
+    }
+
+    protected String getLocalizedErrorMessage(final String key, final String[] params) {
+        return this.messageSource.getMessage(key, params, Locale.US);
     }
 
     private List<String> getParams(final ErrorResponseModel errorResponseModel) {

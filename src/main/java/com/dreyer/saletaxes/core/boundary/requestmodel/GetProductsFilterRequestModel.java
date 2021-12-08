@@ -11,5 +11,5 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode
 public class GetProductsFilterRequestModel {
     private String productName;
-    private boolean isImported;
+    private String isImported;
 }

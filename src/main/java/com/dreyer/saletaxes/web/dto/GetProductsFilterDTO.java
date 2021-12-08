@@ -13,15 +13,19 @@ import lombok.experimental.SuperBuilder;
 public class GetProductsFilterDTO {
     private Long id;
     private String name;
-    private Long price;
+    private Double price;
+    private Double basicTax;
+    private Double additionalTax;
     private Integer productType;
-    private Boolean isImported;
+    private String isImported;
 
     public static GetProductsFilterDTO buildFromModel(GetProductsFilterResponseModel responseModel) {
         return new GetProductsFilterDTO(
                 responseModel.getId(),
                 responseModel.getName(),
                 responseModel.getPrice(),
+                responseModel.getBasicTax(),
+                responseModel.getAdditionalTax(),
                 responseModel.getProductType(),
                 responseModel.getIsImported()
         );
