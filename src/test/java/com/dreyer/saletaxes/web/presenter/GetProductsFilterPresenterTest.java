@@ -3,6 +3,7 @@ package com.dreyer.saletaxes.web.presenter;
 import com.dreyer.saletaxes.core.boundary.responsemodel.ErrorResponseBody;
 import com.dreyer.saletaxes.core.boundary.responsemodel.ErrorResponseModel;
 import com.dreyer.saletaxes.core.boundary.responsemodel.GetProductsFilterResponseModel;
+import com.dreyer.saletaxes.core.domain.entity.ProductType;
 import com.dreyer.saletaxes.web.dto.GetProductsFilterDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,8 +32,10 @@ public class GetProductsFilterPresenterTest {
 
     private Long id = Long.MAX_VALUE;
     private String name = "BIKE";
-    private Long price = Long.MAX_VALUE;
-    private boolean isImported = false;
+    private Double price = Double.MAX_VALUE;
+    private Double basicTax = Double.MAX_VALUE;
+    private Double additionalTax = Double.MAX_VALUE;
+    private String isImported = "N";
     private Locale locale = Locale.US;
 
     @BeforeEach
@@ -48,6 +51,9 @@ public class GetProductsFilterPresenterTest {
                         .id(id)
                         .name(name)
                         .price(price)
+                        .basicTax(basicTax)
+                        .additionalTax(additionalTax)
+                        .productType(ProductType.OTHER)
                         .isImported(isImported)
                         .build());
 
