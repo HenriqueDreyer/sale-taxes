@@ -5,6 +5,7 @@ import com.dreyer.saletaxes.core.boundary.output.GetProductsFilterOutput;
 import com.dreyer.saletaxes.core.boundary.requestmodel.GetProductsFilterRequestModel;
 import com.dreyer.saletaxes.core.boundary.responsemodel.ErrorResponseModel;
 import com.dreyer.saletaxes.core.boundary.responsemodel.GetProductsFilterResponseModel;
+import com.dreyer.saletaxes.core.domain.entity.ProductImportedType;
 import com.dreyer.saletaxes.core.domain.entity.ProductType;
 import com.dreyer.saletaxes.core.domain.gateway.GetProductsFilterGateway;
 
@@ -33,13 +34,20 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
     }
 
     @Override
-    public void execute(GetProductsFilterRequestModel getProductsFilterRequestModel) {
+    public void execute(GetProductsFilterRequestModel requestModel) {
         List<ErrorResponseModel> errors = new ArrayList<>();
 
-        if (Objects.isNull(getProductsFilterRequestModel)) {
+        if (Objects.isNull(requestModel)) {
             errors.add(ErrorResponseModel.builder()
                     .code(CommonErrorCode.E0001.name())
                     .message(CommonErrorCode.E0001.getValue())
+                    .build());
+        }
+
+        if(!isValidIsImported(requestModel.getIsImported())) {
+            errors.add(ErrorResponseModel.builder()
+                    .code(CommonErrorCode.E0002.name())
+                    .message(CommonErrorCode.E0003.getValue())
                     .build());
         }
 
@@ -49,8 +57,8 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
         }
 
         final var products = this.getProductsFilterGateway.getProductsByFilter(
-                getProductsFilterRequestModel.getProductName(),
-                getProductsFilterRequestModel.getIsImported()
+                requestModel.getProductName(),
+                requestModel.getIsImported()
         );
 
         if (products != null && !products.isEmpty()) {
@@ -67,6 +75,13 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
         } else {
             this.getProductsFilterOutput.success(Collections.emptyList());
         }
+    }
+
+    private boolean isValidIsImported(String isImported) {
+        if(isImported != null && !isImported.isEmpty() && !isImported.isBlank()) {
+            return ProductImportedType.isProductImportedTypeValid(isImported);
+        }
+        return true;
     }
 
     private Double calcAdditionalTax(Double price) {

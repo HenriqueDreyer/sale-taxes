@@ -3,7 +3,6 @@ package com.dreyer.saletaxes.jpa.gatewayimp;
 import com.dreyer.saletaxes.core.domain.entity.Product;
 import com.dreyer.saletaxes.core.domain.gateway.GetProductsFilterGateway;
 import com.dreyer.saletaxes.jpa.query.NativeSQLQuery;
-import com.dreyer.saletaxes.jpa.query.PojoMapping;
 import com.dreyer.saletaxes.jpa.query.ProductQueryTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -38,8 +37,7 @@ public class GetProductsFilterGatewayImp implements GetProductsFilterGateway {
 
         final var nativeQuery = String.format(NativeSQLQuery.PRODUCTS_FILTER_NATIVE_QUERY, params);
 
-        final var query = this.entityManager.createNativeQuery(nativeQuery,
-                PojoMapping.PRODUCTS_FILTER_MAPPING);
+        final var query = this.entityManager.createNativeQuery(nativeQuery, "ProductsFilterMapping");
 
         if(isProductNameValid(productName)) {
             query.setParameter(PRODUCT_NAME_PARAM, productName);

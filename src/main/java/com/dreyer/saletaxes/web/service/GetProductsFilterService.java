@@ -4,16 +4,16 @@ import com.dreyer.saletaxes.core.boundary.input.GetProductsFilterInput;
 import com.dreyer.saletaxes.core.boundary.requestmodel.GetProductsFilterRequestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class GetProductsFilterService {
     private final GetProductsFilterInput getProductsFilterInput;
 
     @Autowired
-    public GetProductsFilterService(GetProductsFilterInput getProductsFilterInput) {
+    public GetProductsFilterService(final GetProductsFilterInput getProductsFilterInput) {
         this.getProductsFilterInput = getProductsFilterInput;
     }
 
