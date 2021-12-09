@@ -38,10 +38,7 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
         List<ErrorResponseModel> errors = new ArrayList<>();
 
         if (Objects.isNull(requestModel)) {
-            errors.add(ErrorResponseModel.builder()
-                    .code(CommonErrorCode.E0001.name())
-                    .message(CommonErrorCode.E0001.getValue())
-                    .build());
+            throw new IllegalArgumentException(CommonErrorCode.E0001.getValue());
         }
 
         if(!isValidIsImported(requestModel.getIsImported())) {

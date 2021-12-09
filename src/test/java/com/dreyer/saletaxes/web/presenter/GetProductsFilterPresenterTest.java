@@ -33,7 +33,6 @@ public class GetProductsFilterPresenterTest {
     private Double basicTax = Double.MAX_VALUE;
     private Double additionalTax = Double.MAX_VALUE;
     private String isImported = "N";
-    private Locale locale = Locale.US;
 
     @BeforeEach
     public void setup() {
