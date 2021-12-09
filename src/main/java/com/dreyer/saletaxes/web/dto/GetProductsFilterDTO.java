@@ -1,6 +1,7 @@
 package com.dreyer.saletaxes.web.dto;
 
 import com.dreyer.saletaxes.core.boundary.responsemodel.GetProductsFilterResponseModel;
+import com.dreyer.saletaxes.core.domain.entity.ProductType;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -26,7 +27,7 @@ public class GetProductsFilterDTO {
                 responseModel.getPrice(),
                 responseModel.getBasicTax(),
                 responseModel.getAdditionalTax(),
-                responseModel.getProductType(),
+                responseModel.getProductType().getValue(),
                 responseModel.getIsImported()
         );
     }
