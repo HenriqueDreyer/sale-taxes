@@ -47,7 +47,7 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
         if(!isValidIsImported(requestModel.getIsImported())) {
             errors.add(ErrorResponseModel.builder()
                     .code(CommonErrorCode.E0002.name())
-                    .message(CommonErrorCode.E0003.getValue())
+                    .message(CommonErrorCode.E0002.getValue())
                     .build());
         }
 
@@ -85,7 +85,7 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
     }
 
     private Double calcAdditionalTax(Double price) {
-        return Math.round((price * ADDITIONAL_TAX) * 20.0) / 20.0;
+        return ADDITIONAL_TAX;
     }
 
     private Double calcBasicTax(Double price, ProductType productType) {
@@ -95,7 +95,7 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
             case BOOK:
                 return FREE_BASIC_TAX;
             default:
-                return Math.round((price * BASIC_TAX) * 20.0) / 20.0;
+                return BASIC_TAX;
         }
     }
 
