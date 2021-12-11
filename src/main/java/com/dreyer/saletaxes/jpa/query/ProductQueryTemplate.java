@@ -6,7 +6,7 @@ public class ProductQueryTemplate {
     public static final String IS_IMPORTED_FILTER;
 
     static {
-        PRODUCT_NAME_FILTER = " AND NAME LIKE (%:productName%)";
+        PRODUCT_NAME_FILTER = " AND NAME LIKE (:productName)";
         IS_IMPORTED_FILTER = " AND IS_IMPORTED = :productImported";
     }
 }

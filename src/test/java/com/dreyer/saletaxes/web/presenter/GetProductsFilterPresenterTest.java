@@ -25,9 +25,6 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class GetProductsFilterPresenterTest {
 
-    @Mock
-    private MessageSource messageSource;
-
     private GetProductsFilterPresenter getProductsFilterPresenter;
 
     private Long id = Long.MAX_VALUE;
@@ -36,11 +33,10 @@ public class GetProductsFilterPresenterTest {
     private Double basicTax = Double.MAX_VALUE;
     private Double additionalTax = Double.MAX_VALUE;
     private String isImported = "N";
-    private Locale locale = Locale.US;
 
     @BeforeEach
     public void setup() {
-        this.getProductsFilterPresenter = new GetProductsFilterPresenter(messageSource);
+        this.getProductsFilterPresenter = new GetProductsFilterPresenter();
     }
 
     @Test
@@ -91,8 +87,6 @@ public class GetProductsFilterPresenterTest {
         final var expectedResponseBody = ErrorResponseBody.builder()
                 .errors(Collections.singletonList(fullErrorMessage))
                 .build();
-
-        when(this.messageSource.getMessage(errorCode, params.toArray(), locale)).thenReturn(errorMessage);
 
         // When
         final var responseEntity = this.getProductsFilterPresenter.presentOnError(errors);

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 @Repository
@@ -40,7 +41,8 @@ public class GetProductsFilterGatewayImp implements GetProductsFilterGateway {
         final var query = this.entityManager.createNativeQuery(nativeQuery, "ProductsFilterMapping");
 
         if(isProductNameValid(productName)) {
-            query.setParameter(PRODUCT_NAME_PARAM, productName);
+            String nameParam = String.format("%%%s%%", productName.toUpperCase());
+            query.setParameter(PRODUCT_NAME_PARAM, nameParam);
         }
 
         if(isImportedValid(isImported)) {
