@@ -32,6 +32,7 @@ public class GetProductsFilterControllerTest {
 
     private Long id = Long.MAX_VALUE;
     private String name = "BIKE";
+    private String description = "Description";
     private Long price = Long.MAX_VALUE;
     private String isImported = "N";
 

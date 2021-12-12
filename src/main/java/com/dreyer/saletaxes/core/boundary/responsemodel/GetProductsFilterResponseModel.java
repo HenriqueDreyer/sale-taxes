@@ -12,8 +12,7 @@ public class GetProductsFilterResponseModel {
     private Long id;
     private String name;
     private Double price;
-    private Double basicTax;
-    private Double additionalTax;
+    private String description;
     private ProductType productType;
     private String isImported;
 }

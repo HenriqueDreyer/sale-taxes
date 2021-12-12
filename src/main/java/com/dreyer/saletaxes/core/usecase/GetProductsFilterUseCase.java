@@ -65,9 +65,8 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
             this.getProductsFilterOutput.success(products.stream().map(p -> GetProductsFilterResponseModel.builder()
                             .id(p.getId())
                             .name(p.getName())
+                            .description("The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.")
                             .price(p.getPrice())
-                            .basicTax(this.calcBasicTax(p.getPrice(), ProductType.getProductTypeFrom(p.getProductType())))
-                            .additionalTax(this.calcAdditionalTax(p.getPrice()))
                             .productType(ProductType.getProductTypeFrom(p.getProductType()))
                             .isImported(p.getIsImported())
                             .build())
@@ -82,21 +81,6 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
             return ProductImportedType.isProductImportedTypeValid(isImported);
         }
         return true;
-    }
-
-    private Double calcAdditionalTax(Double price) {
-        return Math.round((price * ADDITIONAL_TAX) * 20.0) / 20.0;
-    }
-
-    private Double calcBasicTax(Double price, ProductType productType) {
-        switch (productType) {
-            case FOOD:
-            case MEDKIT:
-            case BOOK:
-                return FREE_BASIC_TAX;
-            default:
-                return Math.round((price * BASIC_TAX) * 20.0) / 20.0;
-        }
     }
 
 }

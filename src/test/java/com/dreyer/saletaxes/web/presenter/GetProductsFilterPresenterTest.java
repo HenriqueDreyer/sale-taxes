@@ -32,9 +32,8 @@ public class GetProductsFilterPresenterTest {
 
     private Long id = Long.MAX_VALUE;
     private String name = "BIKE";
+    private String description = "Description";
     private Double price = Double.MAX_VALUE;
-    private Double basicTax = Double.MAX_VALUE;
-    private Double additionalTax = Double.MAX_VALUE;
     private String isImported = "N";
     private Locale locale = Locale.US;
 
@@ -50,9 +49,8 @@ public class GetProductsFilterPresenterTest {
                 Collections.singletonList(GetProductsFilterResponseModel.builder()
                         .id(id)
                         .name(name)
+                        .description(description)
                         .price(price)
-                        .basicTax(basicTax)
-                        .additionalTax(additionalTax)
                         .productType(ProductType.OTHER)
                         .isImported(isImported)
                         .build());
