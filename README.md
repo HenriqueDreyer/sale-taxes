@@ -1,5 +1,13 @@
 # Sale-Taxes API
-> API de consulta e compra de produtos.
+
+Projeto desenvolvido utilizando as tecnologias:
+* Spring Boot
+* Flyway
+* H2 Embedded Database
+* Lombok
+* Mockito
+
+A arquitetura do backend foi feita com base na `MVVP`, facilicando o desenvolvimento e os testes, separando cada package como um módulo.
 
 ## 💻 Pré-requisitos
 
