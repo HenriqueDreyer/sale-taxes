@@ -18,8 +18,8 @@ public class GetProductsFilterPresenter extends BasePresenter<List<GetProductsFi
         List<GetProductsFilterDTO>> implements GetProductsFilterOutput {
 
     @Autowired
-    public GetProductsFilterPresenter(final MessageSource messageSource) {
-        super(messageSource);
+    public GetProductsFilterPresenter() {
+        super();
     }
 
     @Override

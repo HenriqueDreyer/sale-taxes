@@ -38,16 +38,13 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
         List<ErrorResponseModel> errors = new ArrayList<>();
 
         if (Objects.isNull(requestModel)) {
-            errors.add(ErrorResponseModel.builder()
-                    .code(CommonErrorCode.E0001.name())
-                    .message(CommonErrorCode.E0001.getValue())
-                    .build());
+            throw new IllegalArgumentException(CommonErrorCode.E0001.getValue());
         }
 
         if(!isValidIsImported(requestModel.getIsImported())) {
             errors.add(ErrorResponseModel.builder()
                     .code(CommonErrorCode.E0002.name())
-                    .message(CommonErrorCode.E0003.getValue())
+                    .message(CommonErrorCode.E0002.getValue())
                     .build());
         }
 
@@ -67,6 +64,8 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
                             .name(p.getName())
                             .description("The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.")
                             .price(p.getPrice())
+                            .basicTax(this.calcBasicTax(p.getPrice(), ProductType.getProductTypeFrom(p.getProductType())))
+                            .additionalTax(this.calcAdditionalTax(p.getPrice()))
                             .productType(ProductType.getProductTypeFrom(p.getProductType()))
                             .isImported(p.getIsImported())
                             .build())
@@ -81,6 +80,21 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
             return ProductImportedType.isProductImportedTypeValid(isImported);
         }
         return true;
+    }
+
+    private Double calcAdditionalTax(Double price) {
+        return ADDITIONAL_TAX;
+    }
+
+    private Double calcBasicTax(Double price, ProductType productType) {
+        switch (productType) {
+            case FOOD:
+            case MEDKIT:
+            case BOOK:
+                return FREE_BASIC_TAX;
+            default:
+                return BASIC_TAX;
+        }
     }
 
 }
