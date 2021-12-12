@@ -64,8 +64,6 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
                             .name(p.getName())
                             .description("The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.")
                             .price(p.getPrice())
-                            .basicTax(this.calcBasicTax(p.getPrice(), ProductType.getProductTypeFrom(p.getProductType())))
-                            .additionalTax(this.calcAdditionalTax(p.getPrice()))
                             .productType(ProductType.getProductTypeFrom(p.getProductType()))
                             .isImported(p.getIsImported())
                             .build())

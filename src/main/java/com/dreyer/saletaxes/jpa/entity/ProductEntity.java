@@ -30,7 +30,7 @@ public class ProductEntity {
 
     @EqualsAndHashCode.Include
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
     @Column(name = "id", length = 10, nullable = false)
     private Long id;
 
