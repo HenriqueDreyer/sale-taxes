@@ -25,13 +25,13 @@ mvn clean install
 
 Abra uma linha de comando (ou terminal) e navegue até a pasta onde você tem os arquivos do projeto. Podemos construir e executar o aplicativo emitindo o seguinte comando:
 
-####MacOS/Linux:
+MacOS/Linux:
 
 ```
 ./mvnw spring-boot:run
 ```
 
-####Windows:
+Windows:
 
 ```
 mvnw spring-boot:run
