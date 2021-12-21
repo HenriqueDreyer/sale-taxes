@@ -2,6 +2,7 @@ package com.dreyer.saletaxes.web.controller;
 
 import com.dreyer.saletaxes.core.boundary.requestmodel.GetProductsFilterRequestModel;
 import com.dreyer.saletaxes.core.domain.entity.Product;
+import com.dreyer.saletaxes.web.dto.GetProductsFilterDTO;
 import com.dreyer.saletaxes.web.presenter.GetProductsFilterPresenter;
 import com.dreyer.saletaxes.web.service.GetProductsFilterService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,7 +33,7 @@ public class GetProductsFilterController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Return products list successfully",
                     content = { @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                            schema = @Schema(implementation = Product.class))}),
+                            schema = @Schema(implementation = GetProductsFilterDTO.class))}),
             @ApiResponse(responseCode = "400", description = "Invalid Parameter"),
             @ApiResponse(responseCode = "404", description = "Products list not found"),
             @ApiResponse(responseCode = "500", description = "Internal Server Error")

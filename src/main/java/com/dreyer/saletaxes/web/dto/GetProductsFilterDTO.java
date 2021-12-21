@@ -16,8 +16,12 @@ public class GetProductsFilterDTO {
     private String name;
     private String description;
     private Double price;
+    private Double basicTax;
+    private Double additionalTax;
     private Integer productType;
     private String isImported;
+    private Double totalTaxes;
+    private Double totalPrice;
 
     public static GetProductsFilterDTO buildFromModel(GetProductsFilterResponseModel responseModel) {
         return new GetProductsFilterDTO(
@@ -25,8 +29,12 @@ public class GetProductsFilterDTO {
                 responseModel.getName(),
                 responseModel.getDescription(),
                 responseModel.getPrice(),
+                responseModel.getBasicTax(),
+                responseModel.getAdditionalTax(),
                 responseModel.getProductType().getValue(),
-                responseModel.getIsImported()
+                responseModel.getIsImported(),
+                responseModel.getTotalTaxes(),
+                responseModel.getTotalPrice()
         );
     }
 }
