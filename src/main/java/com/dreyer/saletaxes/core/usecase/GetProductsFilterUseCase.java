@@ -22,10 +22,6 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
     private final GetProductsFilterOutput getProductsFilterOutput;
     private final GetProductsFilterGateway getProductsFilterGateway;
 
-    private final Double BASIC_TAX = 0.1;
-    private final Double ADDITIONAL_TAX = 0.05;
-    private final Double FREE_BASIC_TAX = 0.0;
-
     @Inject
     public GetProductsFilterUseCase(GetProductsFilterOutput getProductsFilterOutput,
                                     GetProductsFilterGateway getProductsFilterGateway) {
@@ -78,21 +74,6 @@ public class GetProductsFilterUseCase implements GetProductsFilterInput {
             return ProductImportedType.isProductImportedTypeValid(isImported);
         }
         return true;
-    }
-
-    private Double calcAdditionalTax(Double price) {
-        return ADDITIONAL_TAX;
-    }
-
-    private Double calcBasicTax(Double price, ProductType productType) {
-        switch (productType) {
-            case FOOD:
-            case MEDKIT:
-            case BOOK:
-                return FREE_BASIC_TAX;
-            default:
-                return BASIC_TAX;
-        }
     }
 
 }
